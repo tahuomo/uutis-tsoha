@@ -1,4 +1,9 @@
 <?php
+session_start();
+if (!isset($_SESSION["login_id"])) {
+    header("Location: kirjaudu.php");
+    die();
+}
 include("error.php");
 include("yhteys.php");
 

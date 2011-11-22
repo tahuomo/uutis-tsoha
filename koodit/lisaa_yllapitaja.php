@@ -17,7 +17,7 @@ $kysely = $yhteys->prepare("INSERT INTO yllapitaja (kayttajanimi, salasana) VALU
 try {
     $kysely->execute(array($nimi, $salattu));
 } catch (PDOException $e) {
-    error("Käyttäjätunnus on jo varattu.");
+    error("Käyttäjätunnus on jo varattu.", "uusi_yllapitaja.php");
 }
 include("yla.php");
 echo("<p>Uusi ylläpitäjä lisätty nimellä " . $nimi . "</p>");

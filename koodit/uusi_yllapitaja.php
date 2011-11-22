@@ -1,4 +1,11 @@
-<?php include("yla.php"); ?>
+<?php
+session_start();
+if (!isset($_SESSION["login_id"])) {
+    header("Location: kirjaudu.php");
+    die();
+}
+include("yla.php");
+?>
 	<form action="lisaa_yllapitaja.php" method="post">
 		<p>Käyttäjätunnus: <br />
 		<input type="text" name="nimi"></p>
