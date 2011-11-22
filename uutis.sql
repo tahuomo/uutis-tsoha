@@ -6,13 +6,13 @@ drop table yllapitaja;
 
 create table luokka (
 	luokka_id serial primary key,
-	nimi varchar(40)
+	nimi varchar(40) unique
 );
 
 create table yllapitaja (
 	yllapitaja_id serial primary key,
-	kayttajanimi varchar(30) not null,
-	salasana varchar(16) not null
+	kayttajanimi varchar(30) unique not null,
+	salasana varchar(32) not null
 );
 
 create table uutinen (
