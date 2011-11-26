@@ -14,7 +14,7 @@ if (strlen($nimimerkki) > 30){
 	error("Nimimerkin pituus max. 30 merkkiä.", $takaisin);
 }
 
-if (strlen($nimimerkki < 1)){
+if (strlen($nimimerkki) < 1){
 	$kysely = $yhteys->prepare("INSERT INTO kommentti (teksti, uutis_id) VALUES (?, ?)");
 	$kysely->execute(array($kommentti, $_POST["uutis_id"]));
 } else {

@@ -23,7 +23,7 @@ include("yla.php");?>
 	<li>Uutisia: <?php echo($uutiset[0]) ?></li>
 	<li>Kategorioita:  <?php echo($luokat[0]) ?></li>
 	<li>Kommentteja: <?php echo($kommentit[0]) ?></li>
-	<li>Ylläpitäjiä:<?php echo($yllapitajat[0]) ?></li>
+	<li>Ylläpitäjiä: <?php echo($yllapitajat[0]) ?></li>
 </ul>
 
 <?php include("ala.php"); ?>

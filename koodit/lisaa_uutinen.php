@@ -14,11 +14,7 @@ if (strlen($_POST["leipa"]) < 1){
 $otsikko = htmlspecialchars($_POST["otsikko"]);
 $leipa = htmlspecialchars($_POST["leipa"]);
 
-$kysely = $yhteys->prepare("SELECT luokka_id FROM luokka WHERE nimi = (?)");
-$kysely->execute(array($_POST["luokka"]));
-$luokka = $kysely->fetch();
-
 $kysely = $yhteys->prepare("INSERT INTO uutinen (otsikko, leipa, luokka, lisaaja) VALUES (?, ?, ?, ?)");
-$kysely->execute(array($otsikko, $leipa, $luokka["luokka_id"], $_SESSION["login_id"]));
+$kysely->execute(array($otsikko, $leipa, $_POST["luokka"], $_SESSION["login_id"]));
 
 header("Location: index.php"); ?>

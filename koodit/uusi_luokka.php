@@ -2,6 +2,9 @@
 include("portsari.php");
 include("yla.php"); 
 include("yhteys.php");
+
+$kysely = $yhteys->prepare("SELECT nimi FROM luokka order by nimi");
+$kysely->execute();
 ?>
 
 <form action="lisaa_luokka.php" method="post">
@@ -10,22 +13,10 @@ include("yhteys.php");
 		<input type="submit" value="Lisää kategoria">
 </form>
 
-
-<?php 
-$kysely = $yhteys->prepare("SELECT nimi FROM luokka order by nimi");
-$kysely->execute();
-?>
-
 <p>Nykyiset kategoriat:
-<?php
-if (empty($kysely)) echo("Kategorioita ei ole vielä olemassa.");
-?>
+<?php if (!isset($kysely)) echo("Kategorioita ei ole vielä olemassa."); ?>
 	<ul>
-	<?php
-	while ($rivi = $kysely->fetch()) {
-		echo ("<li>" . $rivi["nimi"] . "</li>");
-	}
-	?>
+	<?php while ($rivi = $kysely->fetch()) echo ("<li>" . $rivi["nimi"] . "</li>"); ?>
 	</ul>
 </p>
 <?php include("ala.php"); ?>
