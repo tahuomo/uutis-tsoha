@@ -1,9 +1,12 @@
 <?php
+include("portsari.php");
 include("error.php");
 include("yhteys.php");
 
-if (strlen($_POST["nimi"]) < 2){
-	error("Käyttäjätunnuksen on oltava vähintään 2 merkkiä pitkä.", "uusi_yllapitaja.php");
+$pituus = strlen($_POST["nimi"]);
+
+if (( $pituus < 2) || ( $pituus > 40) ){
+	error("Käyttäjätunnuksen sallittu pituus on 2-30 merkkiä.", "uusi_yllapitaja.php");
 }
 if (strlen($_POST["passu1"]) < 4){
 	error("Salasanan on oltava vähintään 4 merkkiä pitkä.", "uusi_yllapitaja.php");	
@@ -19,8 +22,7 @@ try {
 } catch (PDOException $e) {
     error("Käyttäjätunnus on jo varattu.", "uusi_yllapitaja.php");
 }
-include("yla.php");
-echo("<p>Uusi ylläpitäjä lisätty nimellä " . $nimi . "</p>");
-include("ala.php");
+include("yla.php");?>
 
-?>
+<p>Uusi ylläpitäjä lisätty nimellä "<?php echo($nimi); ?>"</p>
+<?php include("ala.php"); ?>

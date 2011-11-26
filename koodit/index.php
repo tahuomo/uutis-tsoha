@@ -1,33 +1,29 @@
-<?php include("yla.php");
-
+<?php 
 include("yhteys.php");
 
 $kysely = $yhteys->prepare("SELECT count(*) FROM uutinen");
 $kysely->execute();
-
 $uutiset = $kysely->fetch();
 
 $kysely = $yhteys->prepare("SELECT count(*) FROM luokka");
 $kysely->execute();
-
 $luokat = $kysely->fetch();
 
 $kysely = $yhteys->prepare("SELECT count(*) FROM kommentti");
 $kysely->execute();
-
 $kommentit = $kysely->fetch();
 
 $kysely = $yhteys->prepare("SELECT count(*) FROM yllapitaja");
 $kysely->execute();
+$yllapitajat = $kysely->fetch(); 
 
-$yllapitajat = $kysely->fetch();
+include("yla.php");?>
 
-echo("<p>");
-echo("Uutisia on tietokannassa " . $uutiset[0] . " kpl. ");
-echo("Ne on jaettu " . $luokat[0] . " kategoriaan, ");
-echo("ja niitä on kommentoitu " . $kommentit[0] . " kertaa.");
-echo("<br /><br />");
-echo("Ylläpitäjiä löytyy " . $yllapitajat[0] . " kpl.");
-echo("</p>");
+<ul>
+	<li>Uutisia: <?php echo($uutiset[0]) ?></li>
+	<li>Kategorioita:  <?php echo($luokat[0]) ?></li>
+	<li>Kommentteja: <?php echo($kommentit[0]) ?></li>
+	<li>Ylläpitäjiä:<?php echo($yllapitajat[0]) ?></li>
+</ul>
 
-include("ala.php"); ?>
+<?php include("ala.php"); ?>

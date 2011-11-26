@@ -1,5 +1,5 @@
 <?php
-session_start(); ?>
+@session_start(); ?>
 
 <!doctype html>
 <html>
@@ -15,8 +15,7 @@ session_start(); ?>
 			<a href="index.php">Etusivu</a>
 			<a href="selaa.php">Selaa uutisia</a>
 			
-<?php
-
+<?php 
 if (!isset($_SESSION["login_id"])){
 	echo("<a href=\"kirjaudu.php\">Kirjaudu sisään</a>");
 } else {
@@ -25,6 +24,7 @@ if (!isset($_SESSION["login_id"])){
 	echo(" <a href=\"uusi_uutinen.php\">Lisää uutinen</a>");
 	echo(" <a href=\"ulos.php\">Kirjaudu ulos</a>");
 }
-echo("</nav>");
-
 ?>
+</nav>
+<div class="line"></div>
+

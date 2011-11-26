@@ -1,11 +1,8 @@
 <?php 
-session_start();
-if (!isset($_SESSION["login_id"])) {
-    header("Location: kirjaudu.php");
-    die();
-}
-
-include("yla.php"); ?>
+include("portsari.php");
+include("yla.php"); 
+include("yhteys.php");
+?>
 
 <form action="lisaa_luokka.php" method="post">
 		<p>Kategorian nimi: <br />
@@ -15,18 +12,20 @@ include("yla.php"); ?>
 
 
 <?php 
-include("yhteys.php");
-
 $kysely = $yhteys->prepare("SELECT nimi FROM luokka order by nimi");
 $kysely->execute();
+?>
 
-// Kerrotaan käyttäjälle jo olemassa olevat luokat
-echo("<p>Olemassa olevat kategoriat:");
-echo("<ul>");
-while ($rivi = $kysely->fetch()) {
-    echo ("<li>" . $rivi["nimi"] . "</li>");
-}
-echo("</ul></p>");
-include("ala.php"); 
- 
- ?>
+<p>Nykyiset kategoriat:
+<?php
+if (empty($kysely)) echo("Kategorioita ei ole vielä olemassa.");
+?>
+	<ul>
+	<?php
+	while ($rivi = $kysely->fetch()) {
+		echo ("<li>" . $rivi["nimi"] . "</li>");
+	}
+	?>
+	</ul>
+</p>
+<?php include("ala.php"); ?>

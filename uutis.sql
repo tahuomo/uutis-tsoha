@@ -19,7 +19,7 @@ create table uutinen (
 	uutis_id serial primary key,
 	otsikko varchar(80) not null,
 	leipa text not null,
-	lisaysaika timestamp,
+	lisaysaika timestamp default now(),
 	muokkausaika timestamp,
 	muokkaussyy varchar(100),
 	luokka int references luokka (luokka_id),
