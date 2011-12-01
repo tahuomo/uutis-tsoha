@@ -13,10 +13,15 @@ $kysely->execute();
 		<input type="submit" value="Lisää kategoria">
 </form>
 
-<p>Nykyiset kategoriat:
-<?php if (!isset($kysely)) echo("Kategorioita ei ole vielä olemassa."); ?>
+<p>
+<?php if ($kysely->rowCount() == 0): ?>
+Kategorioita ei ole vielä olemassa.
+
+<?php else: ?>
+Nykyiset kategoriat:
 	<ul>
 	<?php while ($rivi = $kysely->fetch()) echo ("<li>" . $rivi["nimi"] . "</li>"); ?>
 	</ul>
+<?php endif; ?>
 </p>
 <?php include("ala.php"); ?>

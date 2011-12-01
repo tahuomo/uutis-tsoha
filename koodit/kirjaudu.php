@@ -10,9 +10,9 @@ include("yla.php");
 
 <form action="sisaan.php" method="post">
 	<p>Admin-tunnus:<br />
-	<input type="text" name="tunnus"></p>
+	<input type="text" name="tunnus" required></p>
 	<p>Salasana:<br />
-	<input type="password" name="salasana"><p/>
+	<input type="password" name="salasana" required><p/>
 	<input type="submit" value="Kirjaudu">
 </form>
 

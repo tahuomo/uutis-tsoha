@@ -1,16 +1,15 @@
-body  { min-width: 600px;
-	}
+body  { 	min-width: 600px;}
    
-nav > a { padding: 5px;
-		 border: solid black 1px;
-		 color: green;
-		}
+nav > a {	padding: 5px;
+		border: solid black 1px;
+		color: green;
+}
 	
 
-article {	border: solid black 1px;
-		padding: 10px;
-		max-width: 800px;
-		}
+#article {	border: solid black 1px;
+			padding: 10px;
+			max-width: 800px;
+}
 		
 footer { font-style: italic;}
 		
@@ -19,11 +18,11 @@ footer { font-style: italic;}
 		width: 100%;
 		background-image: url(images/viiva.png);
 		background-repeat: x;
-		}
+}
 		
 .leipa {	white-space: pre-line;
 		word-wrap: break-word;
-		}
+}
 
 .tiedot { font-style: italic;}
 
@@ -31,6 +30,9 @@ footer { font-style: italic;}
 			padding: 10px;
 			width: 400px;
 			margin: 5px;
-			white-space: pre-line;
 			word-wrap: break-word;
-			}
+}
+
+.kommenttitiedot {	font-style: italic;
+					border-bottom: thin solid silver;
+}

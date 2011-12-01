@@ -7,7 +7,7 @@ $kysely = $yhteys->prepare("SELECT count(*) FROM luokka");
 $kysely->execute();
 $tulos = $kysely->fetch();
 if ($tulos[0] < 1){
-	error("Et voi lisätä vielä uutisia, sillä ei ole olemassa yhtään kategoriaa.", "index.php");
+	error("Et voi vielä lisätä uutisia, sillä ei ole olemassa yhtään kategoriaa.", "index.php");
 }
 include("yla.php");
 

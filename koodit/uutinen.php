@@ -6,6 +6,7 @@ if ($_GET["id"] == null){
 	header("Location: index.php");
 	die();
 }
+setlocale(LC_TIME, "fi_FI");
 
 $kysely = $yhteys->prepare("SELECT * FROM uutinen WHERE uutis_id = (?)");
 $kysely->execute(array($_GET["id"]));
@@ -22,34 +23,31 @@ $lisaaja = $kysely->fetch();
 include("yla.php");
 ?>
 
-<article>
+<div id=article>
 	<div class="tiedot">
-<?php
-if ($tulos["muokkausaika"] != null ){
-	echo('<div style="float: right;">');
-	echo('Muokkausaika: ' . $tulos["muokkausaika"]);
-	echo('<br />Muokkaussyy: '. $tulos["muokkaussyy"]);
-	echo('</div>');
-}
-?>
+<?php if ($tulos["muokkausaika"] != null ): ?>
+	<div style="float: right;">
+		Muokkausaika: <?php echo($tulos["muokkausaika"]); ?><br />
+		Muokkaussyy: <?php echo(strftime("%c", strtotime($tulos["muokkaussyy"]))); ?>
+	</div>
+<?php endif; ?>
 	Lisääjä: <?php echo($lisaaja["kayttajanimi"]); ?><br />
-	Lisäysaika: <?php echo($tulos["lisaysaika"]); ?>
+	Lisäysaika: <?php echo(strftime("%c", strtotime($tulos["lisaysaika"]))); ?>
 	</div>
 	<hr />
-<?php 
-	if (isset($_SESSION["login_id"])){
-		echo('<form action="muokkaa.php?id=' . $_GET["id"] . '" method="post" style="float: right;">');
-		echo('<input type="hidden" name="uutis_id" value="' . $tulos["uutis_id"] . '" />');
-		echo('<input type="submit" value="Muokkaa">');
-		echo('</form>');
-	}
-?>
+<?php if (isset($_SESSION["login_id"])): ?>
+	<form action="muokkaa.php?id=<?php echo($_GET["id"]);?>" method="post" style="float: right;">
+		<input type="hidden" name="uutis_id" value="<?php echo($tulos["uutis_id"]);?>" />
+		<input type="submit" value="Muokkaa">
+	</form>
+<?php endif; ?>
 		<h2><?php echo($tulos["otsikko"]);?></h2>
 		<p class="leipa">
 		<?php echo($tulos["leipa"]);?>
 		</p>
-</article>
+</div>
 
 <?php 
 include("kommentit.php");
+kommentit($_GET["id"]);
 include("ala.php");?>
