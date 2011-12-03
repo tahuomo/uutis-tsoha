@@ -1,9 +1,10 @@
 <?php
 include("yhteys.php");
+include("error.php");
 
 $kysely = $yhteys->prepare("SELECT * FROM luokka ORDER BY nimi");
 $kysely->execute();
-if (empty($kysely)){
+if ($kysely->rowCount() < 1){
 	error("Et voi selata uutisia, sillä kategorioita ja siten uutisia ei vielä ole.", "index.php");
 }
 include("yla.php");

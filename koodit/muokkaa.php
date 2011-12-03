@@ -38,7 +38,7 @@ if ($tulos == null){
 	<p>Leipäteksti: <br />
 	<textarea name="leipa" cols="25" rows="25" style="width: 600px"><?php echo($tulos["leipa"]);?></textarea>
 	<br />(Huom! HTML-koodi tai linkit uutisessa eivät toimi.)</p>
-	<p>Muokkaussyy:<br />
+	<p>Muokkaussyy (Max. 100 merkkiä):<br />
 	<input type="text" name="syy" style="width: 600px"></p>
 	<?php echo('<input type="hidden" name="id" value="' . $_GET["id"] . '">') ?>
 	<input type="submit" value="Tallenna muutokset">

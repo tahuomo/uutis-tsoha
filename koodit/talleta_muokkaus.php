@@ -3,14 +3,16 @@ include("portsari.php");
 include("error.php");
 include("yhteys.php");
 
-$pituus = strlen($_POST["otsikko"]);
-
-if ($pituus < 4 || $pituus > 80){
+if (strlen(trim($_POST["otsikko"])) < 4 || strlen($_POST["otsikko"]) > 80){
 	error("Otsikon sallittu pituus on 4-80 merkkiä.", "muokkaa.php?id=" . $_POST["id"]);
 }
-if (strlen($_POST["leipa"]) < 1){
+if (strlen(trim($_POST["leipa"])) < 1){
 	error("Uutisessa olisi tarkoitus olla myös leipätekstiä.", "muokkaa.php?id=" . $_POST["id"]);
 }
+if (strlen($_POST["syy"]) > 100){
+	error("Muokkaussyy on liian pitkä. Max. 100 merkkiä.", "muokkaa.php?id=" . $_POST["id"]);
+}
+
 $otsikko = htmlspecialchars($_POST["otsikko"]);
 $leipa = htmlspecialchars($_POST["leipa"]);
 $syy = htmlspecialchars($_POST["syy"]);

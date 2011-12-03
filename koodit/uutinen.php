@@ -27,8 +27,8 @@ include("yla.php");
 	<div class="tiedot">
 <?php if ($tulos["muokkausaika"] != null ): ?>
 	<div style="float: right;">
-		Muokkausaika: <?php echo($tulos["muokkausaika"]); ?><br />
-		Muokkaussyy: <?php echo(strftime("%c", strtotime($tulos["muokkaussyy"]))); ?>
+		Muokkausaika: <?php echo(strftime("%c", strtotime($tulos["muokkausaika"]))); ?><br />
+		Muokkaussyy: <?php echo($tulos["muokkaussyy"]); ?>
 	</div>
 <?php endif; ?>
 	Lisääjä: <?php echo($lisaaja["kayttajanimi"]); ?><br />

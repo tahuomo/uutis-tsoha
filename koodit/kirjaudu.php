@@ -12,7 +12,7 @@ include("yla.php");
 	<p>Admin-tunnus:<br />
 	<input type="text" name="tunnus" required></p>
 	<p>Salasana:<br />
-	<input type="password" name="salasana" required><p/>
+	<input type="password" name="salasana" required></p>
 	<input type="submit" value="Kirjaudu">
 </form>
 
