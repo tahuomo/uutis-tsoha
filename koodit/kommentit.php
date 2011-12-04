@@ -5,7 +5,7 @@ function kommentit($id){
 	$kysely->execute(array($id));
 
 	
-	if (!empty($kysely)):?>
+	if ($kysely->rowCount() > 0):?>
 	<p>
 	Kommentit:
 	<?php while ($kommentti = $kysely->fetch()): ?>

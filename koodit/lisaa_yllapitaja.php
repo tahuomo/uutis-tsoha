@@ -3,7 +3,7 @@ include("portsari.php");
 include("error.php");
 include("yhteys.php");
 
-if (( strlen(trim($_POST["nimi"])) < 2) || (strlen($_POST["nimi"]) > 40) ){
+if (( strlen(trim($_POST["nimi"])) < 2) || (strlen($_POST["nimi"]) > 30) ){
 	error("Käyttäjätunnuksen sallittu pituus on 2-30 merkkiä.", "uusi_yllapitaja.php");
 }
 if (strlen($_POST["passu1"]) < 4){
